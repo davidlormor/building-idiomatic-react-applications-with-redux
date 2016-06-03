@@ -7,7 +7,16 @@ const reducers = combineReducers({
   visibilityFilter
 })
 
-const initialState = {}
+const initialState = {
+  todos: [
+    {
+      id: '0',
+      text: 'Welcome back!',
+      completed: false
+    }
+  ]
+}
+
 const store = createStore(reducers, initialState, compose(
   window.devToolsExtension ? window.devToolsExtension() : (f) => f
 ))
