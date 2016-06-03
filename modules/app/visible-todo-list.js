@@ -6,19 +6,15 @@ import { toggleTodo } from '../todo/actions'
 
 import { getVisibleTodos } from './helpers'
 
-const mapStateToProps = ({ todos, visibilityFilter }) => {
-  return {
-    todos: getVisibleTodos(todos, visibilityFilter)
-  }
-}
+const mapStateToProps = ({ todos, visibilityFilter }) => ({
+  todos: getVisibleTodos(todos, visibilityFilter)
+})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onTodoClick: (id) => {
-      dispatch(toggleTodo(id))
-    }
+const mapDispatchToProps = (dispatch) => ({
+  onTodoClick(id) {
+    dispatch(toggleTodo(id))
   }
-}
+})
 
 const VisibleTodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList)
 

@@ -13,13 +13,9 @@ export default (todo = {}, action) => {
   }
 }
 
-const toggle = (todo) => {
-  return {
-    ...todo,
-    completed: !todo.completed
-  }
-}
+const toggle = (todo) => ({
+  ...todo,
+  completed: !todo.completed
+})
 
-const newTodo = ({ id, text, completed = false }) => {
-  return { id, text, completed }
-}
+const newTodo = ({ id, text, completed = false }) => ({ id, text, completed })

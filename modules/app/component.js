@@ -5,14 +5,12 @@ import VisibleTodoList from './visible-todo-list'
 import AddTodo from './add-todo'
 import Footer from './footer'
 
-const App = () => {
-  return (
-    <div>
-      <AddTodo/>
-      <VisibleTodoList/>
-      <Footer/>
-    </div>
-  )
-}
+const App = () => (
+  <div>
+    <AddTodo/>
+    <VisibleTodoList/>
+    <Footer/>
+  </div>
+)
 
 export default App

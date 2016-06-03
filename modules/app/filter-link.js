@@ -5,19 +5,15 @@ import { setVisibilityFilter } from '../visibility-filter/actions'
 
 import Link from './link'
 
-const mapStateToProps = ({ visibilityFilter }, { filter }) => {
-  return {
-    active: filter === visibilityFilter
-  }
-}
+const mapStateToProps = ({ visibilityFilter }, { filter }) => ({
+  active: filter === visibilityFilter
+})
 
-const mapDispatchToProps = (dispatch, { filter }) => {
-  return {
-    onClick: () => {
-      dispatch(setVisibilityFilter(filter))
-    }
+const mapDispatchToProps = (dispatch, { filter }) => ({
+  onClick() {
+    dispatch(setVisibilityFilter(filter))
   }
-}
+})
 
 const FilterLink = connect(mapStateToProps, mapDispatchToProps)(Link)
 
