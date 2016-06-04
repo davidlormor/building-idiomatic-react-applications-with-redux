@@ -1,13 +1,9 @@
-import { combineReducers, compose, createStore } from 'redux'
-import todos from './modules/todos/reducer'
+import { compose, createStore } from 'redux'
+import reducers from './modules/reducers'
 import { loadState, saveState } from './local-storage'
 import throttle from 'lodash/throttle'
 
 export const configureStore = () => {
-  const reducers = combineReducers({
-    todos
-  })
-
   const initialState = loadState()
 
   const store = createStore(reducers, initialState, compose(
