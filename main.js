@@ -1,14 +1,16 @@
-import React, { Component, PropTypes } from 'react'
-import { Provider } from 'react-redux'
+// Dependencies
+import React from 'react'
 import { render } from 'react-dom'
 
-import store from './store'
+// Store
+import { configureStore } from './store'
+const store = configureStore()
 
-import App from './modules/app/component'
+// Components
+import Root from './modules/root'
 
+// Module
 render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
+  <Root store={store} />,
   document.getElementById('app')
 )
