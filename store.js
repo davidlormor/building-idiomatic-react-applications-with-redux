@@ -1,13 +1,11 @@
 import { combineReducers, compose, createStore } from 'redux'
 import todos from './modules/todos/reducer'
-import visibilityFilter from './modules/visibility-filter/reducer'
 import { loadState, saveState } from './local-storage'
 import throttle from 'lodash/throttle'
 
 export const configureStore = () => {
   const reducers = combineReducers({
-    todos,
-    visibilityFilter
+    todos
   })
 
   const initialState = loadState()
