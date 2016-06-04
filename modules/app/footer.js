@@ -5,12 +5,15 @@ import FilterLink from './filter-link'
 const Footer = () => (
   <div>
     Show:&nbsp;
-    <FilterLink filter='SHOW_ALL'>All</FilterLink>
-    &nbsp;
-    <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink>
-    &nbsp;
-    <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>
-    &nbsp;
+    <FilterLink filter='all'>
+      All
+    </FilterLink>,&nbsp;
+    <FilterLink filter='active'>
+      Active
+    </FilterLink>,&nbsp;
+    <FilterLink filter='completed'>
+      Completed
+    </FilterLink>
   </div>
 )
 
