@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Todo from '../todo/component'
+import Todo from '../todo'
 
 export default ({ onTodoClick, todos }) => (
   <ul>

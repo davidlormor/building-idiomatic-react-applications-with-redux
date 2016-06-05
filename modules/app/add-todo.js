@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import { addTodo } from '../todos/actions'
+import { addTodo } from '../actions'
 
 let input;
 

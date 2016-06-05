@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
-import reducer from './modules/todos/reducer'
+import reducer from './modules/reducers'
 
 export const configureStore = () => {
   // Promise middlware

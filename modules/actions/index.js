@@ -1,7 +1,7 @@
 import { normalize } from 'normalizr'
 import { Todo, Todos } from '../../schema'
 import * as api from '../../api'
-import { getIsFetching } from './reducer'
+import { getIsFetching } from '../reducers'
 
 export const fetchTodos = filter => (dispatch, getState) => {
   if (getIsFetching(getState(), filter)) return Promise.resolve()
