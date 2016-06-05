@@ -1,7 +1,7 @@
 // Dependencies
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { getVisibleTodos } from '../reducers'
+import { getVisibleTodos } from '../todos/reducer'
 import * as todosActions from '../todos/actions'
 import { toggleTodo } from '../todo/actions'
 import VisibleTodoList from './component'
