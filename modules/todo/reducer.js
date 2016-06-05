@@ -13,7 +13,7 @@ export default (todo = {}, action) => {
   }
 }
 
-const toggle = (todo) => ({
+const toggle = todo => ({
   ...todo,
   completed: !todo.completed
 })

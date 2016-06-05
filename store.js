@@ -1,12 +1,12 @@
 import { createStore } from 'redux'
 import reducer from './modules/reducers'
 
-const addLoggingToDispatch = (store) => {
+const addLoggingToDispatch = store => {
   const rawDispatch = store.dispatch
 
   if (!console.group) return rawDispatch
 
-  return (action) => {
+  return action => {
     console.group(action.type)
     console.log('%c prev state', 'color: gray', store.getState())
     console.log('%c action', 'color: blue', action)
