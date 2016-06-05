@@ -1,50 +1,64 @@
 import { combineReducers } from 'redux'
-import todo from '../todo/reducer'
 
-export const byId = (state = {}, action) => {
+const cache = (state = {}, action) => {
   switch (action.type) {
-    case 'ADD_TODO':
-    case 'TOGGLE_TODO':
-      return {
-        ...state,
-        [action.id]: todo(state[action.id], action)
-      }
+    case 'RECEIVE_TODOS':
+      const nextState = { ...state }
+
+      action.response.forEach(todo => {
+        nextState[todo.id] = todo
+      })
+      return nextState
     default:
       return state
   }
 }
 
-// Not sure why we need this...
-// Can't we just map the byId object to an array directly (i.e. via lodash, etc.)?
-export const allIds = (state = [], action) => {
+const allIds = (state = [], action) => {
+  if (action.filter !== 'all') return state
+
   switch (action.type) {
-    case 'ADD_TODO':
-      return [...state, action.id]
+    case 'RECEIVE_TODOS':
+      return action.response.map(todo => todo.id)
     default:
       return state
   }
 }
 
-const todos = combineReducers({
-  byId,
-  allIds
+const activeIds = (state = [], action) => {
+  if (action.filter !== 'active') return state
+
+  switch (action.type) {
+    case 'RECEIVE_TODOS':
+      return action.response.map(todo => todo.id)
+    default:
+      return state
+  }
+}
+
+const completedIds = (state = [], action) => {
+  if (action.filter !== 'completed') return state
+
+  switch (action.type) {
+    case 'RECEIVE_TODOS':
+      return action.response.map(todo => todo.id)
+    default:
+      return state
+  }
+}
+
+const idsByFilter = combineReducers({
+  all: allIds,
+  active: activeIds,
+  completed: completedIds
 })
 
-export default todos
+export default combineReducers({
+  cache,
+  idsByFilter
+})
 
-const getAllTodos = state =>
-  state.allIds.map(id => state.byId[id])
-
-export const getVisibleTodos = (state, filter) => {
-  const allTodos = getAllTodos(state)
-  switch (filter) {
-    case 'all':
-      return allTodos
-    case 'completed':
-      return allTodos.filter(todo => todo.completed)
-    case 'active':
-      return allTodos.filter(todo => !todo.completed)
-    default:
-      throw new Error(`Unknown filter: ${filter}.`)
-  }
-}
+export const getVisibleTodos = (state, filter) =>
+  state
+    .idsByFilter[filter]
+    .map(id => state.cache[id])
