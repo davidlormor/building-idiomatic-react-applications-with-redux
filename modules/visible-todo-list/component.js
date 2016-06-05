@@ -17,8 +17,7 @@ export default class VisibleTodoList extends Component {
   }
 
   fetchData () {
-    const { fetchTodos, filter, requestTodos } = this.props
-    requestTodos(filter)
+    const { fetchTodos, filter } = this.props
     fetchTodos(filter)
   }
 
