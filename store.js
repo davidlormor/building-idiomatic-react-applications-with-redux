@@ -1,11 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
+import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import reducer from './modules/todos/reducer'
-
-const thunk = (store) => (next) => (action) =>
-  typeof action === 'function'
-    ? action(store.dispatch)
-    : next(action)
 
 export const configureStore = () => {
   // Promise middlware
