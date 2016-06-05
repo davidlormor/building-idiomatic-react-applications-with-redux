@@ -16,6 +16,7 @@
     "koa": "^1.2.0",
     "lodash": "^4.13.1",
     "node-uuid": "^1.4.7",
+    "normalizr": "^2.1.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",

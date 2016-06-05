@@ -3,7 +3,7 @@ import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { getVisibleTodos, getErrorMessage, getIsFetching } from '../todos/reducer'
 import * as todosActions from '../todos/actions'
-import { toggleTodo } from '../todo/actions'
+import { toggleTodo } from '../todos/actions'
 import VisibleTodoList from './component'
 
 // Mappings
