@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
 import cache, { getTodo } from './cache'
-import { createList as createListForFilter, getIds as getIdsByFilter } from './filters'
+import {
+  createList as createListForFilter,
+  getIds as getIdsByFilter,
+  getIsFetching as listIsFetching
+} from './filtered-lists'
 
 const listByFilter = combineReducers({
   all: createListForFilter('all'),
@@ -15,3 +19,6 @@ export default combineReducers({
 
 export const getVisibleTodos = (state, filter) =>
   getIdsByFilter(state.listByFilter[filter]).map(id => getTodo(state, id))
+
+export const getIsFetching = (state, filter) =>
+  listIsFetching(state.listByFilter[filter])

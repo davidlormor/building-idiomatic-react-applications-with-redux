@@ -17,15 +17,17 @@ export default class VisibleTodoList extends Component {
   }
 
   fetchData () {
-    const { fetchTodos, filter } = this.props
+    const { fetchTodos, filter, requestTodos } = this.props
+    requestTodos(filter)
     fetchTodos(filter)
   }
 
   render () {
-    const { toggleTodo, ...rest } = this.props
+    const { toggleTodo, todos, isFetching } = this.props
+    if (isFetching && !todos.length) return (<p>Loading...</p>)
 
     return <TodoList
-      {...rest}
+      todos={todos}
       onTodoClick={toggleTodo}
     />
   }
