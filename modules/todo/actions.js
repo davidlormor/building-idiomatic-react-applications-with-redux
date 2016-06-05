@@ -1,10 +1,13 @@
-import { v4 as uuid } from 'node-uuid'
+import * as api from '../../api'
 
-export const addTodo = text => ({
-  type: 'ADD_TODO',
-  id: uuid(),
-  text
-})
+export const addTodo = text => (dispatch) => {
+  api.addTodo(text).then(response => {
+    dispatch({
+      type: 'ADD_TODO_SUCCESS',
+      response
+    })
+  })
+}
 
 export const toggleTodo = id => ({
   type: 'TOGGLE_TODO',
