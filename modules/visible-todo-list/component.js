@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 
 // Components
 import TodoList from '../todo-list'
+import Error from '../error'
 
 // Class Definition
 export default class VisibleTodoList extends Component {
@@ -22,8 +23,18 @@ export default class VisibleTodoList extends Component {
   }
 
   render () {
-    const { toggleTodo, todos, isFetching } = this.props
+    const { errorMessage, isFetching, toggleTodo, todos } = this.props
+
     if (isFetching && !todos.length) return (<p>Loading...</p>)
+
+    if (errorMessage && !todos.length) {
+      return (
+        <Error
+          message={errorMessage}
+          onRetry={() => this.fetchData()}
+        />
+      )
+    }
 
     return <TodoList
       todos={todos}

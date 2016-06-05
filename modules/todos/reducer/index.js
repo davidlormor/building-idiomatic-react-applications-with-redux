@@ -3,7 +3,8 @@ import cache, { getTodo } from './cache'
 import {
   createList as createListForFilter,
   getIds as getIdsByFilter,
-  getIsFetching as listIsFetching
+  getIsFetching as listIsFetching,
+  getErrorMessage as getErrorMessageForFilter
 } from './filtered-lists'
 
 const listByFilter = combineReducers({
@@ -22,3 +23,6 @@ export const getVisibleTodos = (state, filter) =>
 
 export const getIsFetching = (state, filter) =>
   listIsFetching(state.listByFilter[filter])
+
+export const getErrorMessage = (state, filter) =>
+  getErrorMessageForFilter(state.listByFilter[filter])
