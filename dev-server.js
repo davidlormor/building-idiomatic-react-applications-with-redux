@@ -18,11 +18,10 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler))
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'))
+  res.sendFile(path.join(__dirname, 'src', 'index.html'))
 })
 
 app.listen(port, error => {
-  /* eslint-disable no-console */
   if (error) {
     console.error(error)
   } else {
@@ -32,5 +31,4 @@ app.listen(port, error => {
       port
     )
   }
-/* eslint-enable no-console */
 })

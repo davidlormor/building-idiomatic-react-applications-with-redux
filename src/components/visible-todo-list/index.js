@@ -2,8 +2,8 @@
 import React, { Component } from 'react'
 
 // Components
-import TodoList from '../todo-list'
-import Error from '../error'
+import TodoList from './todo-list'
+import Error from 'components/error'
 
 // Class Definition
 export default class VisibleTodoList extends Component {
@@ -19,7 +19,7 @@ export default class VisibleTodoList extends Component {
 
   fetchData () {
     const { fetchTodos, filter } = this.props
-    fetchTodos(filter).then(() => console.log(`${filter} todos fetched!`))
+    fetchTodos(filter)
   }
 
   render () {
@@ -42,3 +42,26 @@ export default class VisibleTodoList extends Component {
     />
   }
 }
+// Dependencies
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
+import { getVisibleTodos, getErrorMessage, getIsFetching } from 'reducers'
+import * as actions from 'actions'
+
+// Mappings
+const mapStateToProps = (state, { params }) => {
+  const filter = params.filter || 'all'
+
+  return {
+    errorMessage: getErrorMessage(state, filter),
+    filter,
+    isFetching: getIsFetching(state, filter),
+    todos: getVisibleTodos(state, filter)
+  }
+}
+
+// Export
+export default withRouter(connect(
+  mapStateToProps,
+  actions
+)(VisibleTodoList))

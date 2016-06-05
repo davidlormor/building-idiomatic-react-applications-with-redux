@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node app.js",
-    "serve": "babel-node dev-server.js",
+    "dev": "babel-node dev-server.js",
     "test": "mocha --compilers js:babel-register -w test"
   },
   "author": "",

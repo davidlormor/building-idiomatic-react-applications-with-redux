@@ -1,6 +1,6 @@
 import { normalize } from 'normalizr'
-import { Todo, Todos } from '../../schema'
-import * as api from '../../api'
+import { Todo, Todos } from 'schema'
+import * as api from 'api'
 import { getIsFetching } from '../reducers'
 
 export const fetchTodos = filter => (dispatch, getState) => {

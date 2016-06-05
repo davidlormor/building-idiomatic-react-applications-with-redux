@@ -3,7 +3,7 @@ const webpack = require('webpack')
 module.exports = {
   entry: [
     'webpack-hot-middleware/client',
-    './main.js'
+    './src/main.js'
   ],
   output: {
     path: __dirname,
@@ -22,5 +22,8 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ]
+  ],
+  resolve: {
+    modulesDirectories: ['src', 'node_modules']
+  }
 }

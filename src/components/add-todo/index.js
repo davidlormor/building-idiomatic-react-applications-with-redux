@@ -1,9 +1,11 @@
-import React, { PropTypes } from 'react'
+// Dependencies
+import React from 'react'
 import { connect } from 'react-redux'
 
-import { addTodo } from '../actions'
+// Components
+import { addTodo } from 'actions'
 
-let input;
+let input
 
 const AddTodo = ({ dispatch }) => (
   <div>
@@ -12,7 +14,7 @@ const AddTodo = ({ dispatch }) => (
     }} />
     <button onClick={() => {
       dispatch(addTodo(input.value))
-      input.value= ''
+      input.value = ''
     }}>
       Add Todo
     </button>
