@@ -3,6 +3,18 @@ import { combineReducers } from 'redux'
 
 // Create a reducer function for the given filter name
 export const createList = filter => {
+  const handleToggle = (state, action) => {
+    const { result: toggledId, entities } = action.response
+    const { completed } = entities.todos[toggledId]
+    const shouldRemove = (
+      (completed && filter === 'active') ||
+      (!completed && filter === 'completed')
+    )
+    return shouldRemove
+      ? state.filter(id => id !== toggledId)
+      : state
+  }
+
   const ids = (state = [], action) => {
     switch (action.type) {
       case 'FETCH_TODOS_SUCCESS':
@@ -13,6 +25,8 @@ export const createList = filter => {
         return filter !== 'completed'
           ? [...state, action.response.id]
           : state
+      case 'TOGGLE_TODO_SUCCESS':
+        return handleToggle(state, action)
       default:
         return state
     }
@@ -59,4 +73,5 @@ export const getIds = (state) => state.ids
 // Return whether a list is currently awaiting response from the server
 export const getIsFetching = (state) => state.isFetching
 
+// Return the list's current error message
 export const getErrorMessage = (state) => state.errorMessage
