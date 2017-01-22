@@ -6,7 +6,7 @@ import TodoList from './todo-list'
 import Error from 'components/error'
 
 // Class Definition
-export default class VisibleTodoList extends Component {
+class VisibleTodoList extends Component {
   componentDidMount () {
     this.fetchData()
   }
